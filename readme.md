@@ -10,9 +10,9 @@ Supporting the current version of PHP, less one, as a minimum requirement, to ke
 
 Based on semantic versioning, with the following constraints
 
-1.x.x releases support PHP8.4, PHP8.5
-2.x.x releases support PHP8.5, PHP8.6
-3.x.x releases support PHP8.6, PHP-Next (tbc)
+- 1.x.x releases support PHP8.4, PHP8.5
+- 2.x.x releases support PHP8.5, PHP8.6
+- 3.x.x releases support PHP8.6, PHP-Next (tbc)
 
 Major point releases may introduce breaking changes, which will be in the release notes.
 
