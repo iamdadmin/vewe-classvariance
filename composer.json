@@ -1,0 +1,53 @@
+{
+    "name": "vewe/classvariance",
+    "description": "Vewe ClassVariance, an all-PHP combined implementation of Class Variance Authority, twMerge, and Tailwind-Variants",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "tailwind",
+        "tailwindcss",
+        "css",
+        "utility-css",
+        "php",
+        "twmerge",
+        "cva",
+        "tailwind-variants"
+    ],
+    "homepage": "https://github.com/iamdadmin/vewe-classvariance",
+    "support": {
+        "issues": "https://github.com/iamdadmin/vewe-classvariance/issues",
+        "source": "https://github.com/iamdadmin/vewe-classvariance"
+    },
+    "authors": [
+        {
+            "name": "iamDadmin"
+        }
+    ],
+    "require": {
+        "php": "^8.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.0",
+        "carthage-software/mago": "^1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vewe\\ClassVariance\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Vewe\\ClassVariance\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "phpunit": "vendor/bin/phpunit tests --display-warnings --display-skipped --display-deprecations --display-errors --display-notices"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "carthage-software/mago": true
+        }
+    }
+}

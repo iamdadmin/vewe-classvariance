@@ -1,0 +1,73 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Vewe\ClassVariance\Tests;
+
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
+use Vewe\ClassVariance\Cv;
+
+final class CvWithSlotTest extends TestCase
+{
+    #[Test]
+    public function cv_with_slot_test(): void
+    {
+        $button = Cv::new(
+            ['base' => ['font-semibold', 'border', 'rounded']],
+            [
+                'variants' => [
+                    'intent' => [
+                        'primary' => [
+                            'base' => ['bg-blue-500', 'text-white', 'border-transparent', 'hover:bg-blue-600'],
+                        ],
+                        'secondary' => [
+                            'base' => ['bg-white', 'text-gray-800', 'border-gray-400', 'hover:bg-gray-100'],
+                        ],
+                    ],
+                    'size' => [
+                        'small' => [
+                            'base' => ['text-sm', 'py-1', 'px-2'],
+                        ],
+                        'medium' => [
+                            'base' => ['text-base', 'py-2', 'px-4'],
+                        ],
+                    ],
+                ],
+                'compoundVariants' => [
+                    [
+                        'intent' => 'primary',
+                        'size' => 'medium',
+                        'class' => [
+                            'base' => 'uppercase',
+                        ],
+                    ],
+                ],
+                'defaultVariants' => [
+                    'intent' => 'primary',
+                    'size' => 'medium',
+                ],
+            ],
+        );
+
+        $this->assertSame(
+            'font-semibold border rounded bg-blue-500 text-white border-transparent hover:bg-blue-600 text-base py-2 px-4 uppercase',
+            $button(),
+        );
+
+        $this->assertSame(
+            'font-semibold border rounded bg-white text-gray-800 border-gray-400 hover:bg-gray-100 text-sm py-1 px-2',
+            $button(['intent' => 'secondary', 'size' => 'small']),
+        );
+
+        $this->assertSame(
+            'font-semibold border rounded bg-white text-gray-800 border-gray-400 hover:bg-gray-100 text-sm py-1 px-2 focus:ring-2',
+            $button(['class' => 'focus:ring-2', 'className' => 'focus:ring-4', 'intent' => 'secondary', 'size' => 'small']),
+        );
+
+        $this->assertSame(
+            'font-semibold border rounded bg-white text-gray-800 border-gray-400 hover:bg-gray-100 text-sm py-1 px-2 focus:ring-2',
+            $button(['className' => 'focus:ring-2', 'intent' => 'secondary', 'size' => 'small']),
+        );
+    }
+}
