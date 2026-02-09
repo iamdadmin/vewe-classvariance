@@ -41,7 +41,7 @@
         }
     },
     "scripts": {
-        "phpunit": "vendor/bin/phpunit tests --display-warnings --display-skipped --display-deprecations --display-errors --display-notices"
+        "phpunit": "vendor/bin/phpunit --display-warnings --display-skipped --display-deprecations --display-errors --display-notices"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
